@@ -2,8 +2,8 @@
 import { useState } from "react";
 import shortid from "shortid";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../../redux/phonebook-operations";
-import { getContacts } from "../../redux/phonebook-selectors";
+import { addContact } from "../../redux/phonebook/phonebook-operations";
+import { getContacts } from "../../redux/phonebook/phonebook-selectors";
 // import PropTypes from "prop-types";
 import s from "./Form.module.css";
 

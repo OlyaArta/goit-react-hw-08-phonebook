@@ -4,8 +4,8 @@ import ContactItem from "./ContactItem";
 import s from "./Contact.module.css";
 import { useEffect } from "react";
 // import * as actions from "../../redux/phonebook-actions";
-import * as operations from "../../redux/phonebook-operations";
-import { getVisibleContacts } from "../../redux/phonebook-selectors";
+import * as operations from "../../redux/phonebook/phonebook-operations";
+import { getVisibleContacts } from "../../redux/phonebook/phonebook-selectors";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function ContactList() {

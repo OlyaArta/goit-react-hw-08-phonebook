@@ -1,9 +1,9 @@
 // import PropTypes from "prop-types";
 import s from "./Filter.module.css";
-import { getFilter } from "../../redux/phonebook-selectors";
+import { getFilter } from "../../redux/phonebook/phonebook-selectors";
 import { useSelector, useDispatch } from "react-redux";
 // import * as actions from "../../redux/phonebook-actions";
-import { changeFilter } from "../../redux/phonebook-actions";
+import { changeFilter } from "../../redux/phonebook/phonebook-actions";
 
 function Filter() {
   const value = useSelector(getFilter);

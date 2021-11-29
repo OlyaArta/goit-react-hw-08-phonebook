@@ -27,8 +27,7 @@ export default function LoginView() {
 
   return (
     <div>
-      <form autoComplete="on">
-        onSubmit={handleSubmit}
+      <form autoComplete="on" onSubmit={handleSubmit}>
         <label>
           E-mail
           <input

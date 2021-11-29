@@ -6,7 +6,6 @@ import {
   addContact,
   deleteContact,
 } from "./phonebook-operations";
-// import { addContact } from "./phonebook-operations";
 
 const items = createReducer([], {
   [fetchContacts.fulfilled]: (state, { payload }) => payload,

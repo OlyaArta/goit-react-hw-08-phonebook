@@ -1,13 +1,12 @@
 import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { v4 as uuidv4 } from "uuid";
-import { Route, Switch } from "react-router";
+import { Switch } from "react-router";
 import authOperations from "../redux/auth/auth-operations";
 import AppBar from "./appBar/AppBar";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import authSelectors from "../redux/auth/auth-selectors";
-import authSlice from "../redux/auth/auth-slice";
 
 const StartView = lazy(() => import("../views/startView"));
 const RegisterView = lazy(() => import("../views/registration/registerView"));
@@ -26,7 +25,7 @@ function App() {
     !isFetchingCurrentUser && (
       <>
         <AppBar />
-        {/* <Routes> */}
+
         <Switch>
           <Suspense fallback={<p>Loading...</p>}>
             <PublicRoute exact path="/">
@@ -45,7 +44,6 @@ function App() {
               <ContactView />
             </PrivateRoute>
           </Suspense>
-          {/* </Routes> */}
         </Switch>
       </>
     )

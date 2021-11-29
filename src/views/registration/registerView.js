@@ -35,8 +35,7 @@ export default function RegisterView() {
 
   return (
     <div>
-      <form autoComplete="on">
-        onSubmit={handleSubmit}
+      <form autoComplete="on" onSubmit={handleSubmit}>
         <label>
           Name
           <input

@@ -1,9 +1,13 @@
 import { lazy, Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { v4 as uuidv4 } from "uuid";
 import { Route, Switch } from "react-router";
 import authOperations from "../redux/auth/auth-operations";
 import AppBar from "./appBar/AppBar";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+import authSelectors from "../redux/auth/auth-selectors";
+import authSlice from "../redux/auth/auth-slice";
 
 const StartView = lazy(() => import("../views/startView"));
 const RegisterView = lazy(() => import("../views/registration/registerView"));
@@ -12,25 +16,39 @@ const ContactView = lazy(() => import("../views/contactview/ContactView"));
 
 function App() {
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
-    <>
-      <AppBar />
-      <Suspense>
+    !isFetchingCurrentUser && (
+      <>
+        <AppBar />
         {/* <Routes> */}
         <Switch>
-          <Route path="/" element={<StartView />}></Route>
-          <Route path="/register" element={<RegisterView />} />
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/contacts" element={<ContactView />} />
+          <Suspense fallback={<p>Loading...</p>}>
+            <PublicRoute exact path="/">
+              <StartView />
+            </PublicRoute>
+
+            <PublicRoute path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+
+            <PublicRoute path="/login" redirectTo="/contacts" restricted>
+              <LoginView />
+            </PublicRoute>
+
+            <PrivateRoute path="/contacts" redirectTo="/login">
+              <ContactView />
+            </PrivateRoute>
+          </Suspense>
           {/* </Routes> */}
         </Switch>
-      </Suspense>
-    </>
+      </>
+    )
   );
 }
 

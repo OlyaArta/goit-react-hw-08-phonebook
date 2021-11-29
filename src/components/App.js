@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 // import { v4 as uuidv4 } from "uuid";
-import { Route, Switch } from "react-router";
+import { Route, Routes } from "react-router";
 import AppBar from "./appBar/AppBar";
 
 const StartView = lazy(() => import("../views/startView"));
@@ -13,12 +13,12 @@ function App() {
     <>
       <AppBar />
       <Suspense>
-        <Switch>
-          <Route path="/" element={<StartView />}></Route>
-          <Route path="/register" element={<RegisterView />} />
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/contacts" element={<ContactView />} />
-        </Switch>
+        {/* <Routes> */}
+        <Route path="/" element={<StartView />}></Route>
+        <Route path="/register" element={<RegisterView />} />
+        <Route path="/login" element={<LoginView />} />
+        <Route path="/contacts" element={<ContactView />} />
+        {/* </Routes> */}
       </Suspense>
     </>
   );

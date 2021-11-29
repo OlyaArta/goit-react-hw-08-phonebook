@@ -10,13 +10,13 @@ import {
   //   fetchContactSuccess,
   //   fetchContactRequest,
   //   fetchContactError,
-} from "./phonebook-actions";
+} from "./phonebook/phonebook-actions";
 import { createReducer } from "@reduxjs/toolkit";
 import {
   fetchContacts,
   addContact,
   deleteContact,
-} from "./phonebook-operations";
+} from "./phonebook/phonebook-operations";
 // import { addContact } from "./phonebook-operations";
 
 const items = createReducer([], {

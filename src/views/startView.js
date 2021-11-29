@@ -1,5 +1,5 @@
 import React from "react";
 
-const HomeView = () => <></>;
+const StartView = () => <></>;
 
-export default HomeView;
+export default StartView;

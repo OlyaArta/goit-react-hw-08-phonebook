@@ -1,14 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
-import phonebookReducer from "./phonebook-reducer";
-
-///////// пример прослойки /////////////////
-// const myMiddleware = (store) => (next) => (action) => {
-//   console.log("wewe", action);
-
-//   next(action);
-// };
-//////////////////////////////////////////////
+import phonebookReducer from "../redux/phonebook/phonebook-reducer";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import { authReducer } from "./auth";
 
 const middleware = [
   ...getDefaultMiddleware(),
@@ -20,19 +15,27 @@ const middleware = [
   // logger,
 ];
 
-// const persistConfig = {
-//   key: "contacts",
-//   storage,
-//   blackList: ["filter"],
-// };
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
 
 export const store = configureStore({
   reducer: {
-    // contacts: persistReducer(persistConfig, phonebookReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
     contacts: phonebookReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === "development",
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
+
+///////// пример прослойки /////////////////
+// const myMiddleware = (store) => (next) => (action) => {
+//   console.log("wewe", action);
+
+//   next(action);
+// };
+//////////////////////////////////////////////

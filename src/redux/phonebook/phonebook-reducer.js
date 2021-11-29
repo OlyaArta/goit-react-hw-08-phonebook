@@ -1,22 +1,11 @@
 import { combineReducers } from "redux";
-import {
-  //   deleteContactSuccess,
-  //   deleteContactError,
-  //   deleteContactRequest,
-  changeFilter,
-  //   addContactError,
-  //   addContactRequest,
-  //   addContactSuccess,
-  //   fetchContactSuccess,
-  //   fetchContactRequest,
-  //   fetchContactError,
-} from "./phonebook/phonebook-actions";
+import { changeFilter } from "./phonebook-actions";
 import { createReducer } from "@reduxjs/toolkit";
 import {
   fetchContacts,
   addContact,
   deleteContact,
-} from "./phonebook/phonebook-operations";
+} from "./phonebook-operations";
 // import { addContact } from "./phonebook-operations";
 
 const items = createReducer([], {

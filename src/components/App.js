@@ -1,6 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 // import { v4 as uuidv4 } from "uuid";
-import { Route, Routes } from "react-router";
+import { Route, Switch } from "react-router";
+import authOperations from "../redux/auth/auth-operations";
 import AppBar from "./appBar/AppBar";
 
 const StartView = lazy(() => import("../views/startView"));
@@ -9,16 +11,24 @@ const LoginView = lazy(() => import("../views/login/LoginView"));
 const ContactView = lazy(() => import("../views/contactview/ContactView"));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <AppBar />
       <Suspense>
         {/* <Routes> */}
-        <Route path="/" element={<StartView />}></Route>
-        <Route path="/register" element={<RegisterView />} />
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/contacts" element={<ContactView />} />
-        {/* </Routes> */}
+        <Switch>
+          <Route path="/" element={<StartView />}></Route>
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/contacts" element={<ContactView />} />
+          {/* </Routes> */}
+        </Switch>
       </Suspense>
     </>
   );

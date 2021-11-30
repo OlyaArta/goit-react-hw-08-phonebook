@@ -11,6 +11,7 @@ export default function Spinner() {
       height={80}
       width={80}
       timeout={3000}
+      style={{ textAlign: "center" }}
     />
   );
 }

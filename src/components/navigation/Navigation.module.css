@@ -1,0 +1,33 @@
+.nav {
+  border-radius: 10px;
+  padding: 15px 20px;
+  background-color: rgb(89, 207, 104);
+}
+
+.link {
+  height: 50px;
+  width: 130px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  color: rgb(95, 192, 192);
+  background-color: rgb(44, 37, 150);
+}
+
+.activeLink {
+  height: 50px;
+  width: 130px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  color: rgb(34, 109, 179);
+  background-color: rgb(46, 24, 141);
+}
+
+.activeLink:hover .activeLink:focus {
+  background-color: darkkhaki;
+}

@@ -7,6 +7,9 @@ import AppBar from "./appBar/AppBar";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import authSelectors from "../redux/auth/auth-selectors";
+import Spinner from "./Spinner/Spinner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const StartView = lazy(() => import("../views/startView"));
 const RegisterView = lazy(() => import("../views/registration/registerView"));
@@ -27,7 +30,8 @@ function App() {
         <AppBar />
 
         <Switch>
-          <Suspense fallback={<p>Loading...</p>}>
+          {/* <Suspense fallback={<p>Loading...</p>}> */}
+          <Suspense fallback={<Spinner />}>
             <PublicRoute exact path="/">
               <StartView />
             </PublicRoute>
@@ -44,6 +48,17 @@ function App() {
               <ContactView />
             </PrivateRoute>
           </Suspense>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Switch>
       </>
     )

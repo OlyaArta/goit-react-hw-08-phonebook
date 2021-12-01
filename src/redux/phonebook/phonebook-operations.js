@@ -14,13 +14,19 @@ export const addContact = createAsyncThunk(
   }
 );
 
+const removeContact = (id) => {
+  return axios.delete(`/contacts/${id}`);
+};
+
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
-  async (contactId) => {
-    const {
-      data: { id },
-    } = await axios.delete(`./contacts/${contactId}`);
-    return id;
+  async (id, { rejectWithValue }) => {
+    try {
+      await removeContact(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
@@ -31,6 +37,23 @@ export const fetchContacts = createAsyncThunk(
     return data;
   }
 );
+
+///////////еще вариант как фетч сделать//////////////////////
+// const getContacts = () => {
+//   return axios.get("/contacts").then(({ data }) => data);
+// };
+
+// export const fetchContacts = createAsyncThunk(
+//   "contacts/fetchContacts",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const contacts = await getContacts();
+//       return contacts;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 ///////////////пример с асинхронной функцией/////////////////
 

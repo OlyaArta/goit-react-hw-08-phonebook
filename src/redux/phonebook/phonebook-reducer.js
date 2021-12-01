@@ -8,8 +8,8 @@ import {
 } from "./phonebook-operations";
 
 const items = createReducer([], {
-  [fetchContacts.fulfilled]: (state, { payload }) => payload,
-  [addContact.fulfilled]: (state, { payload }) => [...state, payload],
+  [fetchContacts.fulfilled]: (_, { payload }) => payload,
+  [addContact.fulfilled]: (state, { payload }) => [payload, ...state],
   [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter((contact) => contact.id !== payload),
 });

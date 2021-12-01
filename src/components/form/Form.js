@@ -6,6 +6,7 @@ import { addContact } from "../../redux/phonebook/phonebook-operations";
 import { getContacts } from "../../redux/phonebook/phonebook-selectors";
 // import PropTypes from "prop-types";
 import s from "./Form.module.css";
+import { toast } from "react-toastify";
 
 function Form() {
   const contacts = useSelector(getContacts);
@@ -35,12 +36,13 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isContactsIncludes = contacts.find(
-      (contact) => contact.name.name === name
-      // (contact) => contact.name === name
+      (contact) => contact.name === name
     );
 
     if (isContactsIncludes) {
-      return alert(`${name} is alredy in contacts`);
+      return toast.info("This contact is already exist!", {
+        theme: "colored",
+      });
     } else {
       onSubmit({ name, number });
       reset();

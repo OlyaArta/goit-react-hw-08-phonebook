@@ -26,41 +26,43 @@ function App() {
 
   return (
     !isFetchingCurrentUser && (
-      <>
-        <AppBar />
+      <div>
+        <>
+          <AppBar />
 
-        <Switch>
-          {/* <Suspense fallback={<p>Loading...</p>}> */}
-          <Suspense fallback={<Spinner />}>
-            <PublicRoute exact path="/">
-              <StartView />
-            </PublicRoute>
+          <Switch>
+            {/* <Suspense fallback={<p>Loading...</p>}> */}
+            <Suspense fallback={<Spinner />}>
+              <PublicRoute exact path="/">
+                <StartView />
+              </PublicRoute>
 
-            <PublicRoute path="/register" restricted>
-              <RegisterView />
-            </PublicRoute>
+              <PublicRoute path="/register" restricted>
+                <RegisterView />
+              </PublicRoute>
 
-            <PublicRoute path="/login" redirectTo="/contacts" restricted>
-              <LoginView />
-            </PublicRoute>
+              <PublicRoute path="/login" redirectTo="/contacts" restricted>
+                <LoginView />
+              </PublicRoute>
 
-            <PrivateRoute path="/contacts" redirectTo="/login">
-              <ContactView />
-            </PrivateRoute>
-          </Suspense>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </Switch>
-      </>
+              <PrivateRoute path="/contacts" redirectTo="/login">
+                <ContactView />
+              </PrivateRoute>
+            </Suspense>
+          </Switch>
+        </>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
     )
   );
 }

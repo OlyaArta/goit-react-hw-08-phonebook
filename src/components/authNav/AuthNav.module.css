@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: row-reverse;
   padding: 15px 20px;
-  background-color: rgb(135, 233, 147);
 }
 
 .link {
+  text-align: center;
   height: 30px;
   width: 100px;
   padding: 5px 10px;
@@ -13,11 +13,19 @@
   border-radius: 5px;
   text-decoration: none;
   font-weight: 700;
-  color: rgb(95, 192, 192);
-  background-color: rgb(44, 37, 150);
+  color: rgb(208, 216, 216);
+  background-color: #137433;
 }
 
-.activeLink {
+.link:hover {
+  color: rgb(52, 38, 184);
+  background-color: #2be954;
+
+  transition: all 250ms linear;
+}
+
+/* .activeLink {
+  text-align: center;
   display: inline-block;
   height: 30px;
   width: 130px;
@@ -32,4 +40,4 @@
 
 .activeLink:hover .activeLink:focus {
   color: darkkhaki;
-}
+} */

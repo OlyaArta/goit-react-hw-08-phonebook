@@ -13,22 +13,6 @@ export const addContact = createAsyncThunk(
     return data;
   }
 );
-// export const addContact = createAsyncThunk(
-//   "contacts/addContact",
-
-//   async (contact) => {
-//     try {
-//       const { data } = await axios.post("/contacts", contact);
-//       return data;
-//     } catch (error) {
-//       if (data.name === name) {
-//         return toast.info("This contact is already exist!", {
-//           theme: "colored",
-//         });
-//       }
-//     }
-//   }
-// );
 
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",

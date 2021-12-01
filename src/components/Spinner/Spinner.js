@@ -7,7 +7,7 @@ export default function Spinner() {
   return (
     <Loader
       type="Circles"
-      color="#00BFFF"
+      color="#137433"
       height={80}
       width={80}
       timeout={3000}

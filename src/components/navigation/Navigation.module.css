@@ -1,6 +1,5 @@
 .nav {
   padding: 15px 20px;
-  background-color: rgb(135, 233, 147);
 }
 
 .link {
@@ -11,11 +10,18 @@
   border-radius: 5px;
   text-decoration: none;
   font-weight: 700;
-  color: rgb(95, 192, 192);
-  background-color: rgb(44, 37, 150);
+  color: rgb(220, 228, 228);
+  background-color: #137433;
 }
 
-.activeLink {
+.link:hover {
+  color: rgb(52, 38, 184);
+  background-color: #2be954;
+
+  transition: all 250ms linear;
+}
+
+/* .activeLink {
   height: 50px;
   width: 130px;
   padding: 5px 10px;
@@ -25,8 +31,8 @@
   font-weight: 700;
   color: rgb(34, 109, 179);
   background-color: rgb(46, 24, 141);
-}
+} */
 
-.activeLink:hover .activeLink:focus {
+/* .activeLink:hover .activeLink:focus {
   background-color: darkkhaki;
-}
+} */
